@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import CountrySelector from '../components/CountrySelector';
+import {selectButton, selectCountry, handleFocus, handleBlur} from '../actions/index.js'
 
 class CountrySelectorContainer extends React.Component {
   constructor(props, context){
@@ -37,29 +38,16 @@ class CountrySelectorContainer extends React.Component {
   }
 
   selectCountry(country){
-    this.context.store.dispatch({
-      type: 'SET_SELECTED_COUNTRY',
-      selectedCountry: country
-    });
-
-    this.context.store.dispatch({
-      type: 'SET_COUNTRY_LIST_OPEN',
-      countryListOpen: false
-    });
-  }
+    this.context.store.dispatch(selectCountry(country));
+    this.context.store.dispatch(handleBlur(event));
+  };
 
   handleFocus(event){
-    this.context.store.dispatch({
-      type: 'SET_COUNTRY_LIST_OPEN',
-      countryListOpen: true
-    });
+    this.context.store.dispatch(handleFocus(event));
   }
 
   handleBlur(event){
-    this.context.store.dispatch({
-      type: 'SET_COUNTRY_LIST_OPEN',
-      countryListOpen: false
-    });
+    this.context.store.dispatch(handleBlur(event));
   }
 
   render(){

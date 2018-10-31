@@ -17,6 +17,7 @@ function CountrySelector({ countryListOpen, selectedCountry, selectCountry, hand
         value={selectedCountry}
         onFocus={handleFocus}
         onBlur={handleBlur}
+        readOnly
       />
       <div className={listClasses}>
         <ul>
